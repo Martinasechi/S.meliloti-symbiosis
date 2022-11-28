@@ -1,0 +1,295 @@
+---
+title: "DESeq2_analysis"
+author: "MS"
+date: "11/5/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+# Contrasts analysis with DESeq2
+# dds_all object
+
+colData(dds_all)
+
+# strain and condition are factors
+
+design(dds_all) <- ~ 1 + strain + condition + strain:condition 
+
+dds <- DESeq(dds_all)
+
+resultsNames(dds)
+
+# get the model matrix
+mod_mat <- model.matrix(design(dds), colData(dds))
+
+# define coefficient vectors for each condition
+
+# 1021 strain and condition
+Rm1021_camp <- colMeans(mod_mat[dds$strain == "1021" & dds$condition == "camporegio", ])
+Rm1021_lodi <- colMeans(mod_mat[dds$strain == "1021" & dds$condition == "lodi", ])
+Rm1021_verb <- colMeans(mod_mat[dds$strain == "1021" & dds$condition == "verbena", ])
+Rm1021_lut <- colMeans(mod_mat[dds$strain == "1021" & dds$condition == "luteolin", ])
+
+res1 <- results(dds, contrast = Rm1021_camp - Rm1021_lodi - Rm1021_verb - Rm1021_lut)
+
+summary(res1)
+
+plotMA(res1, ylim=c(-35,15))
+
+
+# BL225C strain and condition
+BL225C_camp <- colMeans(mod_mat[dds$strain == "BL225C" & dds$condition == "camporegio", ])
+BL225C_lodi <- colMeans(mod_mat[dds$strain == "BL225C" & dds$condition == "lodi", ])
+BL225C_verb <- colMeans(mod_mat[dds$strain == "BL225C" & dds$condition == "verbena", ])
+BL225C_lut <- colMeans(mod_mat[dds$strain == "BL225C" & dds$condition == "luteolin", ])
+
+res2 <- results(dds, contrast = BL225C_camp - BL225C_lodi - BL225C_verb - BL225C_lut)
+
+summary(res2)
+
+
+# AK83 strain and condition
+AK83_camp <- colMeans(mod_mat[dds$strain == "AK83" & dds$condition == "camporegio", ])
+AK83_lodi <- colMeans(mod_mat[dds$strain == "AK83" & dds$condition == "lodi", ])
+AK83_verb <- colMeans(mod_mat[dds$strain == "AK83" & dds$condition == "verbena", ])
+AK83_lut <- colMeans(mod_mat[dds$strain == "AK83" & dds$condition == "luteolin", ])
+
+res3 <- results(dds, contrast = AK83_camp - AK83_lodi - AK83_verb - AK83_lut)
+
+summary(res3)
+
+
+# Hybrid strain and condition
+Hybrid_camp <- colMeans(mod_mat[dds$strain == "Hybrid" & dds$condition == "camporegio", ])
+Hybrid_lodi <- colMeans(mod_mat[dds$strain == "Hybrid" & dds$condition == "lodi", ])
+Hybrid_verb <- colMeans(mod_mat[dds$strain == "Hybrid" & dds$condition == "verbena", ])
+Hybrid_lut <- colMeans(mod_mat[dds$strain == "Hybrid" & dds$condition == "luteolin", ])
+
+res4 <- results(dds, contrast = Hybrid_camp - Hybrid_lodi - Hybrid_verb - Hybrid_lut)
+
+summary(res4)
+
+
+# Camporegio condition and strain
+camp_1021 <- colMeans(mod_mat[dds$condition == "camporegio" & dds$strain == "1021", ])
+camp_BL225C <- colMeans(mod_mat[dds$condition == "camporegio" & dds$strain == "BL225C", ])
+camp_AK83 <- colMeans(mod_mat[dds$condition == "camporegio" & dds$strain == "AK83", ])
+camp_Hybrid <- colMeans(mod_mat[dds$condition == "camporegio" & dds$strain == "Hybrid", ])
+
+res5 <- results(dds, contrast = camp_1021 - camp_BL225C - camp_AK83 - camp_Hybrid)
+
+summary(res5)
+
+
+# Lodi condition and strain
+lodi_1021 <- colMeans(mod_mat[dds$condition == "lodi" & dds$strain == "1021", ])
+lodi_BL225C <- colMeans(mod_mat[dds$condition == "lodi" & dds$strain == "BL225C", ])
+lodi_AK83 <- colMeans(mod_mat[dds$condition == "lodi" & dds$strain == "AK83", ])
+lodi_Hybrid <- colMeans(mod_mat[dds$condition == "lodi" & dds$strain == "Hybrid", ])
+
+res6 <- results(dds, contrast = lodi_1021 - lodi_BL225C - lodi_AK83 - lodi_Hybrid)
+
+summary(res6)
+
+
+# Verbena condition and strain
+verb_1021 <- colMeans(mod_mat[dds$condition == "verbena" & dds$strain == "1021", ])
+verb_BL225C <- colMeans(mod_mat[dds$condition == "verbena" & dds$strain == "BL225C", ])
+verb_AK83 <- colMeans(mod_mat[dds$condition == "verbena" & dds$strain == "AK83", ])
+verb_Hybrid <- colMeans(mod_mat[dds$condition == "verbena" & dds$strain == "Hybrid", ])
+
+res7 <- results(dds, contrast = verb_1021 - verb_BL225C - verb_AK83 - verb_Hybrid)
+
+summary(res7)
+
+
+# Luteolin condition and strain
+lut_1021 <- colMeans(mod_mat[dds$condition == "luteolin" & dds$strain == "1021", ])
+lut_BL225C <- colMeans(mod_mat[dds$condition == "luteolin" & dds$strain == "BL225C", ])
+lut_AK83 <- colMeans(mod_mat[dds$condition == "luteolin" & dds$strain == "AK83", ])
+lut_Hybrid <- colMeans(mod_mat[dds$condition == "luteolin" & dds$strain == "Hybrid", ])
+
+res8 <- results(dds, contrast = lut_1021 - lut_BL225C - lut_AK83 - lut_Hybrid)
+
+summary(res8)
+
+
+# Convert res object in a dataframe and extract the DEGs
+res1df <- as.data.frame(res1)
+res1df <- subset(res1df, abs(log2FoldChange) > 1 & padj < 0.01)
+
+res2df <- as.data.frame(res2)
+res2df <- subset(res2df, abs(log2FoldChange) > 1 & padj < 0.01)
+
+res3df <- as.data.frame(res3)
+res3df <- subset(res3df, abs(log2FoldChange) > 1 & padj < 0.01)
+
+res4df <- as.data.frame(res4)
+res4df <- subset(res4df, abs(log2FoldChange) > 1 & padj < 0.01)
+
+res5df <- as.data.frame(res5)
+res5df <- subset(res5df, abs(log2FoldChange) > 1 & padj < 0.01)
+
+res6df <- as.data.frame(res6)
+res6df <- subset(res6df, abs(log2FoldChange) > 1 & padj < 0.01)
+
+res7df <- as.data.frame(res7)
+res7df <- subset(res7df, abs(log2FoldChange) > 1 & padj < 0.01)
+
+res8df <- as.data.frame(res8)
+res8df <- subset(res8df, abs(log2FoldChange) > 1 & padj < 0.01)
+
+
+# convert gene IDs 
+setwd("/home/workstation/Scrivania/MARTINA/DEGs Analysis")
+
+id_DEG <- read.csv("modified_roary_output.csv", sep = ",")
+
+id_DEG[5] <- id_DEG$X1021
+
+colnames(id_DEG)[5] <- "Hybrid"
+
+id_DEG$Hybrid[] <- with(id_DEG, dplyr::coalesce(id_DEG$Hybrid, id_DEG$BL225C))
+
+id_DEG[6] <- id_DEG$Hybrid
+
+colnames(id_DEG)[6] <- "All_strains"
+
+id_DEG$All_strains[] <- with(id_DEG, dplyr::coalesce(id_DEG$All_strains, id_DEG$AK83))
+
+
+# res1df
+res1df[7] <- rownames(res1df)
+
+colnames(res1df)[7] <- "id"
+
+res1df$id[] <- id_DEG$X1021[match(unlist(res1df$id), id_DEG$Gene)]
+
+library(dplyr)
+
+res1df <- relocate(res1df, "id", .before = "baseMean")
+
+res1df <- res1df[!is.na(res1df$id),]
+
+
+
+# res2df
+res2df[7] <- rownames(res2df)
+
+colnames(res2df)[7] <- "id"
+
+res2df$id[] <- id_DEG$BL225C[match(unlist(res2df$id), id_DEG$Gene)]
+
+res2df <- relocate(res2df, "id", .before = "baseMean")
+
+res2df <- res2df[!is.na(res2df$id),]
+
+
+
+# res3df
+res3df[7] <- rownames(res3df)
+
+colnames(res3df)[7] <- "id"
+
+res3df$id[] <- id_DEG$AK83[match(unlist(res3df$id), id_DEG$Gene)]
+
+res3df <- relocate(res3df, "id", .before = "baseMean")
+
+res3df <- res3df[!is.na(res3df$id),]
+
+
+
+# res4df
+res4df[7] <- rownames(res4df)
+
+colnames(res4df)[7] <- "id"
+
+res4df$id[] <- id_DEG$Hybrid[match(unlist(res4df$id), id_DEG$Gene)]
+
+res4df <- relocate(res4df, "id", .before = "baseMean")
+
+res4df <- res4df[!is.na(res4df$id),]
+
+
+
+# res5df
+res5df[7] <- rownames(res5df)
+
+colnames(res5df)[7] <- "id"
+
+res5df$id[] <- id_DEG$All_strains[match(unlist(res5df$id), id_DEG$Gene)]
+
+res5df <- relocate(res5df, "id", .before = "baseMean")
+
+res5df <- res5df[!is.na(res5df$id),]
+
+
+
+# res6df
+res6df[7] <- rownames(res6df)
+
+colnames(res6df)[7] <- "id"
+
+res6df$id[] <- id_DEG$All_strains[match(unlist(res6df$id), id_DEG$Gene)]
+
+res6df <- relocate(res5df, "id", .before = "baseMean")
+
+res6df <- res6df[!is.na(res6df$id),]
+
+
+
+# res7df
+res7df[7] <- rownames(res7df)
+
+colnames(res7df)[7] <- "id"
+
+res7df$id[] <- id_DEG$All_strains[match(unlist(res7df$id), id_DEG$Gene)]
+
+res7df <- relocate(res7df, "id", .before = "baseMean")
+
+res7df <- res7df[!is.na(res7df$id),]
+
+
+
+# res8df
+res8df[7] <- rownames(res8df)
+
+colnames(res8df)[7] <- "id"
+
+res8df$id[] <- id_DEG$All_strains[match(unlist(res8df$id), id_DEG$Gene)]
+
+res8df <- relocate(res8df, "id", .before = "baseMean")
+
+res8df <- res8df[!is.na(res8df$id),]
+
+
+
+# Save dataframe as csv file
+setwd("/home/workstation/Scrivania/MARTINA/DEGs Analysis/Deseq2_contrast")
+
+write.csv(res1df, file = "/home/workstation/Scrivania/MARTINA/DEGs Analysis/Deseq2_contrast/1021_contrast.csv", row.names = FALSE)
+
+write.csv(res2df, file = "/home/workstation/Scrivania/MARTINA/DEGs Analysis/Deseq2_contrast/BL225C_contrast.csv", row.names = FALSE)
+
+write.csv(res3df, file = "/home/workstation/Scrivania/MARTINA/DEGs Analysis/Deseq2_contrast/AK83_contrast.csv", row.names = FALSE)
+
+write.csv(res4df, file = "/home/workstation/Scrivania/MARTINA/DEGs Analysis/Deseq2_contrast/Hybrid_contrast.csv", row.names = FALSE)
+
+write.csv(res5df, file = "/home/workstation/Scrivania/MARTINA/DEGs Analysis/Deseq2_contrast/camporegio_contrast.csv", row.names = FALSE)
+
+write.csv(res6df, file = "/home/workstation/Scrivania/MARTINA/DEGs Analysis/Deseq2_contrast/lodi_contrast.csv", row.names = FALSE)
+
+write.csv(res7df, file = "/home/workstation/Scrivania/MARTINA/DEGs Analysis/Deseq2_contrast/verbena_contrast.csv", row.names = FALSE)
+
+write.csv(res8df, file = "/home/workstation/Scrivania/MARTINA/DEGs Analysis/Deseq2_contrast/lueolin_contrast.csv", row.names = FALSE)
+
+
+```
+
+
+
