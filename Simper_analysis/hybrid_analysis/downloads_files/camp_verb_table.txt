@@ -1,0 +1,10 @@
+ID	Gene Name	Species	GOTERM_CC_DIRECT	GOTERM_MF_DIRECT	INTERPRO	UP_KW_BIOLOGICAL_PROCESS	UP_KW_CELLULAR_COMPONENT	UP_KW_DOMAIN	UP_SEQ_FEATURE
+SinmeB_6186	NnrS family protein(SM2011_RS03410)	Sinorhizobium meliloti 2011	GO:0016021~integral component of membrane,		IPR010266:NnrS,		KW-0472~Membrane,	KW-0812~Transmembrane,KW-1133~Transmembrane helix,	TRANSMEM:Helical,
+SinmeB_6152	NosL family protein(C770_RS22575)	Sinorhizobium meliloti GR4			IPR008719:Nitrous oxide reductase accessory protein NosL,			KW-0732~Signal,
+SinmeB_5816	amino acid permease(C770_RS24230)	Sinorhizobium meliloti GR4	GO:0005887~integral component of plasma membrane,	GO:0015496~putrescine:ornithine antiporter activity,	IPR002293:Amino acid/polyamine transporter I,IPR027566:Putrescine-ornithine antiporter,	KW-0813~Transport,	KW-0472~Membrane,KW-0997~Cell inner membrane,KW-1003~Cell membrane,		TRANSMEM:Helical,
+SinmeB_6188	hypothetical protein(C770_RS22395)	Sinorhizobium meliloti GR4			IPR002744:Domain of unknown function DUF59,				DOMAIN:FeS_assembly_P,
+SinmeB_6188	metal-sulfur cluster assembly factor(SM2011_RS03420)	Sinorhizobium meliloti 2011			IPR002744:Domain of unknown function DUF59,				DOMAIN:FeS_assembly_P,
+SinmeB_6159	nuclear export factor GLE1(C770_RS22540)	Sinorhizobium meliloti GR4			IPR012533:GLE1, N-terminal, bacteria,			KW-0732~Signal,	DOMAIN:DUF1775,
+SinmeB_5820	transporter(C770_RS24210)	Sinorhizobium meliloti GR4	GO:0016021~integral component of membrane,	GO:0022857~transmembrane transporter activity,	IPR002293:Amino acid/polyamine transporter I,		KW-0472~Membrane,	KW-0812~Transmembrane,KW-1133~Transmembrane helix,	TRANSMEM:Helical,
+SinmeB_6175	universal stress protein(C770_RS22460)	Sinorhizobium meliloti GR4			IPR006015:Universal stress protein A,IPR006016:UspA,				DOMAIN:Usp,
+SinmeB_6175	universal stress protein(SM2011_RS03355)	Sinorhizobium meliloti 2011			IPR006015:Universal stress protein A,IPR006016:UspA,				DOMAIN:Usp,
