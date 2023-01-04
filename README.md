@@ -14,13 +14,13 @@ Sets of genes differentially expressed during the perception of host plant root 
 Therefore, this study demonstrated that the initial perception of root exudates by _Sinorhizobium meliloti_ leads to many changes in the rhizobium transcriptome and that these changes are dependent on the genotype x genotype interaction. Also, RNA-sequencing data have been useful to understand which metabolic and biochemistry pathways are more or less expressed during the early phases of the symbiosis. Additionally, from this thesis we can identify which bacterial strain is the most active in transcriptional response and, in future, this could be used to genetically improve _S. meliloti_ bioinoculant for the improvement of legume growth in agricultural ecosystems.
 
 
-## Repository ##
+## Repository
 In this repository one can consult the RMarkdown scripts created on Rstudio, which show the various steps and codes used to perform data analysis and graphical representations. In particular, there are the following scripts:
 
-• ### “Simper_Analysis.Rmd” ### : about the analysis with the simper function.
+• ### “Simper_Analysis.Rmd” : about the analysis with the simper function.
 
-• ### “Id_genes_variability.Rmd” ### : about the creation of the tables with genes within 50% and 100% of the cumsum.
+• ### “Id_genes_variability.Rmd” : about the creation of the tables with genes within 50% and 100% of the cumsum.
 
-• ### "DESeq2_analysis.Rmd” ### : about the analysis with the contrast function.
+• ### "DESeq2_analysis.Rmd” : about the analysis with the contrast function.
 
-• ### “Clustering_Heatmap_PCA.Rmd” ### : about the creation of the graphical representations.
+• ### “Clustering_Heatmap_PCA.Rmd”: about the creation of the graphical representations.
