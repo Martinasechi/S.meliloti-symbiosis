@@ -15,6 +15,8 @@ Therefore, this study demonstrated that the initial perception of root exudates 
 
 
 
+
+
 In this repository one can consult the RMarkdown scripts created on Rstudio, which show the various steps and codes used to perform data analysis and graphical representations. In particular, there are the following scripts:
 
 • “Simper_Analysis.Rmd”: about the analysis with the simper function.
