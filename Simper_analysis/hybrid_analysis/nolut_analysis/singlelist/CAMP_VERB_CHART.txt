@@ -1,0 +1,2 @@
+Category	Term	Count	%	PValue	Genes	List Total	Pop Hits	Pop Total	Fold Enrichment	Bonferroni	Benjamini	FDR
+INTERPRO	IPR002293:Amino acid/polyamine transporter I	2	20.0	0.009560176766841885	SINMEB_5820, SINMEB_5816	6	2	1044	174.0	0.06503219208916533	0.0669212373678932	0.0669212373678932

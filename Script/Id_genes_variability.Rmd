@@ -1,0 +1,144 @@
+---
+title: "Id_genes_variability"
+author: "MS"
+date: "20/4/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Create tables with genes id (50% of cumsum):
+```{r}
+setwd("/home/workstation/Scrivania/MARTINA/Simper_Analysis/Id_genes_variability")
+
+
+# Strain 1021
+id_genes_1021 <- read.csv("1021_id_genes.csv", sep = ",")
+
+id_genes_1021_df1 <- id_genes_1021[ , 1:2]
+
+id_genes_1021_df2 <- id_genes_1021[ , 3:8]
+id_genes_1021_df2 <- id_genes_1021_df2[-(172:1090),]
+
+id_genes_1021_df2[] <- id_genes_1021_df1$id_gene[match(unlist(id_genes_1021_df2), id_genes_1021_df1$sample)]
+
+write.csv(id_genes_1021_df2, file = "/home/workstation/Scrivania/MARTINA/Simper_Analysis/Id_genes_variability/1021_id_genes_table.csv", row.names = FALSE)
+
+
+
+# Strain AK83
+id_genes_AK83 <- read.csv("AK83_id_genes.csv", sep = ",")
+
+id_genes_AK83_df1 <- id_genes_AK83[ , 1:2]
+
+id_genes_AK83_df2 <- id_genes_AK83[ , 3:8]
+id_genes_AK83_df2 <- id_genes_AK83_df2[-(108:675),]
+
+id_genes_AK83_df2[] <- id_genes_AK83_df1$id_gene[match(unlist(id_genes_AK83_df2), id_genes_AK83_df1$sample)]
+
+write.csv(id_genes_AK83_df2, file = "/home/workstation/Scrivania/MARTINA/Simper_Analysis/Id_genes_variability/AK83_id_genes_table.csv", row.names = FALSE)
+
+
+
+# Strain BL225C
+id_genes_BL225C <- read.csv("BL225C_id_genes.csv", sep = ",")
+
+id_genes_BL225C_df1 <- id_genes_BL225C[ , 1:2]
+
+id_genes_BL225C_df2 <- id_genes_BL225C[ , 3:8]
+id_genes_BL225C_df2 <- id_genes_BL225C_df2[-(318:2077),]
+
+id_genes_BL225C_df2[] <- id_genes_BL225C_df1$id_gene[match(unlist(id_genes_BL225C_df2), id_genes_BL225C_df1$sample)]
+
+write.csv(id_genes_BL225C_df2, file = "/home/workstation/Scrivania/MARTINA/Simper_Analysis/Id_genes_variability/BL225C_id_genes_table.csv", row.names = FALSE)
+
+
+# Strain hybrid
+id_genes_hybrid <- read.csv("hybrid_id_genes.csv", sep = ",")
+
+id_genes_hybrid_df1 <- id_genes_hybrid[ , 1:2]
+
+id_genes_hybrid_df2 <- id_genes_hybrid[ , 3:8]
+id_genes_hybrid_df2 <- id_genes_hybrid_df2[-(150:978),]
+
+id_genes_hybrid_df2[] <- id_genes_hybrid_df1$id_gene[match(unlist(id_genes_hybrid_df2), id_genes_hybrid_df1$sample)]
+
+write.csv(id_genes_hybrid_df2, file = "/home/workstation/Scrivania/MARTINA/Simper_Analysis/Id_genes_variability/hybrid_id_genes_table.csv", row.names = FALSE)
+
+```
+
+
+Create tables with genes id (100% of cumsum):
+```{r}
+setwd("/home/workstation/Scrivania/MARTINA/Simper_Analysis/David_analysis2/1021_analysis")
+
+# Strain 1021
+id_1021 <- read.csv("1021_id_gene_1.csv", sep = ",")
+
+id_1021_df1 <- id_1021[ , 1:2]
+
+id_1021_df2 <- id_1021[ , 3:8]
+
+id_1021_df2 <- id_1021_df2[-(551:1090),]
+
+id_1021_df2[] <- id_1021_df1$id_gene[match(unlist(id_1021_df2), id_1021_df1$sample)]
+
+write.csv(id_1021_df2, file = "/home/workstation/Scrivania/MARTINA/Simper_Analysis/David_analysis2/1021_analysis/1021_id_genes1_table.csv", row.names = FALSE)
+
+
+
+# Strain BL225C
+setwd("/home/workstation/Scrivania/MARTINA/Simper_Analysis/David_analysis2/BL225C_analysis")
+
+id_BL225C <- read.csv("BL225C_id_genes2.csv", sep = ",")
+
+id_BL225C_df1 <- id_BL225C[ , 1:2]
+
+id_BL225C_df2 <- id_BL225C[ , 3:8]
+
+id_BL225C_df2 <- id_BL225C_df2[-(1055:2077),]
+
+id_BL225C_df2[] <- id_BL225C_df1$id_gene[match(unlist(id_BL225C_df2), id_BL225C_df1$sample)]
+
+write.csv(id_BL225C_df2, file = "/home/workstation/Scrivania/MARTINA/Simper_Analysis/David_analysis2/BL225C_analysis/BL225C_id_genes2_table.csv", row.names = FALSE)
+
+
+
+# Strain hybrid
+setwd("/home/workstation/Scrivania/MARTINA/Simper_Analysis/David_analysis2/hybrid_analysis")
+
+id_hybrid <- read.csv("hybrid_id_genes2.csv", sep = ",")
+
+id_hybrid_df1 <- id_hybrid[ , 1:2]
+
+id_hybrid_df2 <- id_hybrid[ , 3:8]
+
+id_hybrid_df2 <- id_hybrid_df2[-(497:978),]
+
+id_hybrid_df2[] <- id_hybrid_df1$id_gene[match(unlist(id_hybrid_df2), id_hybrid_df1$sample)]
+
+write.csv(id_hybrid_df2, file = "/home/workstation/Scrivania/MARTINA/Simper_Analysis/David_analysis2/hybrid_analysis/hybrid_id_genes2_table.csv", row.names = FALSE)
+
+
+
+# Strain AK83
+setwd("/home/workstation/Scrivania/MARTINA/Simper_Analysis/David_analysis2/AK83_analysis")
+
+id_AK83 <- read.csv("AK83_id_genes2.csv", sep = ",")
+
+id_AK83_df1 <- id_AK83[ , 1:2]
+
+id_AK83_df2 <- id_AK83[ , 3:8]
+
+id_AK83_df2 <- id_AK83_df2[-(351:675),]
+
+id_AK83_df2[] <- id_AK83_df1$id_gene[match(unlist(id_AK83_df2), id_AK83_df1$sample)]
+
+write.csv(id_AK83_df2, file = "/home/workstation/Scrivania/MARTINA/Simper_Analysis/David_analysis2/AK83_analysis/AK83_id_genes2_table.csv", row.names = FALSE)
+
+
+```
+
+

@@ -1,0 +1,24 @@
+Gene Group 1	Enrichment Score: 5.885484640346806
+ENSEMBL_GENE_ID	Gene Name
+SinmeB_5740	reverse transcriptase(C770_RS23255)
+SinmeB_5740	reverse transcriptase(C770_RS22085)
+SinmeB_5740	reverse transcriptase(C770_RS22665)
+SinmeB_5740	reverse transcriptase(C770_RS18725)
+SinmeB_5740	reverse transcriptase(C770_RS24095)
+SinmeB_5740	reverse transcriptase(C770_RS21565)
+
+Gene Group 2	Enrichment Score: 0.37705547600626266
+ENSEMBL_GENE_ID	Gene Name
+SinmeB_6291	ABC transporter permease(C770_RS21865)
+SinmeB_6168	peptidase S41(C770_RS22495)
+SinmeB_5820	transporter(C770_RS24210)
+SinmeB_6165	nitrogen fixation protein fixG(C770_RS22510)
+SinmeB_6164	nitrogen fixation protein FixH(C770_RS22515)
+SinmeB_6220	conjugal transfer protein TrbL(C770_RS22235)
+SinmeB_6204	NnrU family protein(C770_RS22320)
+SinmeB_6313	ABC transporter permease(C770_RS21755)
+SinmeB_6008	polyamine ABC transporter permease(C770_RS23880)
+SinmeB_6201	cytochrome c oxidase subunit III(C770_RS22335)
+SinmeB_6218	conjugal transfer protein TraJ(C770_RS22245)
+SinmeB_6162	nitrogen fixation protein FixS(C770_RS22525)
+

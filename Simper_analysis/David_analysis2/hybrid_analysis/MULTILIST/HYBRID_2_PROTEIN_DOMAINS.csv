@@ -1,0 +1,17 @@
+Category	Term	Count	%	PValue	Genes	List Total	Pop Hits	Pop Total	Fold Enrichment	Bonferroni	Benjamini	FDR
+INTERPRO	IPR013597:Group II intron, maturase-specific	6	7.2289156626506	3.28E-07	SINMEB_5740	40	6	1044	26.1	2.86E-05	9.52E-06	9.52E-06
+INTERPRO	IPR000477:Reverse transcriptase	6	7.2289156626506	3.28E-07	SINMEB_5740	40	6	1044	26.1	2.86E-05	9.52E-06	9.52E-06
+INTERPRO	IPR000123:RNA-directed DNA polymerase (reverse transcriptase), msDNA	6	7.2289156626506	3.28E-07	SINMEB_5740	40	6	1044	26.1	2.86E-05	9.52E-06	9.52E-06
+INTERPRO	IPR002293:Amino acid/polyamine transporter I	2	2.40963855421687	0.073351627158627	SINMEB_5820, SINMEB_5816	40	2	1044	26.1	0.998676871055356	1	1
+												
+												
+												
+Category	Term	Count	%	PValue	Genes	List Total	Pop Hits	Pop Total	Fold Enrichment	Bonferroni	Benjamini	FDR
+PFAM	PF00078:Reverse transcriptase (RNA-dependent DNA polymerase)	6	7.2289156626506	4.09E-07	SINMEB_5740	40	6	999	24.975	1.72E-05	8.59E-06	8.59E-06
+PFAM	PF08388:Group II intron, maturase-specific domain	6	7.2289156626506	4.09E-07	SINMEB_5740	40	6	999	24.975	1.72E-05	8.59E-06	8.59E-06
+PFAM	PF13520:Amino acid permease	2	2.40963855421687	0.076591621681774	SINMEB_5820, SINMEB_5816	40	2	999	24.975	0.964800211883578	1	1
+												
+												
+												
+Category	Term	Count	%	PValue	Genes	List Total	Pop Hits	Pop Total	Fold Enrichment	Bonferroni	Benjamini	FDR
+SUPFAM	SSF56672:DNA/RNA polymerases	6	7.2289156626506	1.96E-07	SINMEB_5740	27	6	751	27.8148148148148	4.51E-06	4.51E-06	4.51E-06

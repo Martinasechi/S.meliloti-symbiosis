@@ -1,0 +1,7 @@
+Category	Term	Count	%	PValue	Genes	List Total	Pop Hits	Pop Total	Fold Enrichment	Bonferroni	Benjamini	FDR
+INTERPRO	IPR008972:Cupredoxin	2	3.33333333333333	0.091110709848401	SINMEB_6148, SINMEB_6182	32	15	4890	20.375	0.999520400328025	1	1
+												
+												
+												
+Category	Term	Count	%	PValue	Genes	List Total	Pop Hits	Pop Total	Fold Enrichment	Bonferroni	Benjamini	FDR
+SUPFAM	SSF49503:Cupredoxins	2	3.33333333333333	0.090002216569034	SINMEB_6148, SINMEB_6182	23	15	3517	20.3884057971014	0.896015639020413	1	1
