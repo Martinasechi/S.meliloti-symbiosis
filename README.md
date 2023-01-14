@@ -1,5 +1,5 @@
 # S.meliloti-symbiosis
-## Master's thesis in Molecular and Applied Biology at the University of Florence
+## Master's thesis on computational biology (supervised by Prof. Alessio Mengoni). Master's degree in Molecular and Applied Biology at the University of Florence (December 2022).
 
 ### Systems biology in an ecological context: the model of the nitrogen fixing bacterial symbiont _Sinorhizobium meliloti_
 
