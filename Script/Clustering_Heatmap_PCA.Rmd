@@ -12,6 +12,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 
+library(pheatmap)
+library(ggbiplot)
+
+
 # Create a heatmap from simper analysis results (by David)
 
 setwd("/Users/martina/Desktop/R/Heatmap_PCA/Simper")
@@ -32,15 +36,9 @@ d <- dist(hm_simp_df)
 
 hc <- hclust(d)
 
-setwd("/Users/martina/Desktop/R/Heatmap_PCA/Simper")
 pdf("Clustering_simper.pdf")
 plot(hc) # Dendrogram
 
-
-
-install.packages("pheatmap")
-
-library(pheatmap)
 
 p1 <- pheatmap(hm_simp_df, scale = "none", cluster_rows = TRUE, cluster_cols = TRUE,
          clustering_distance_rows = "euclidean",clustering_distance_cols = "euclidean", 
@@ -48,15 +46,13 @@ p1 <- pheatmap(hm_simp_df, scale = "none", cluster_rows = TRUE, cluster_cols = T
          cutree_rows = NA, cutree_cols = NA, 
         border_color = "gray", color = hcl.colors(50, "YlGn",),
         main = "Heatmap of DAVID analysis results after Simper analysis",
-        fontsize = 10, fontsize_row = 8, fontsize_col = 8)
-         
+        fontsize = 10, fontsize_row = 8, fontsize_col = 8)       
 save_pheatmap_png <- function(x, filename, width=1200, height=1000, res = 150) {
   png(filename, width = width, height = height, res = res)
   grid::grid.newpage()
   grid::grid.draw(x$gtable)
   dev.off()
 }
- 
 save_pheatmap_png(p1, "Heatmap of DAVID analysis results after Simper analysis.png")
 
 
@@ -68,45 +64,32 @@ p2 <- pheatmap(hm_simp_df, scale = "row", cluster_rows = TRUE, cluster_cols = TR
         border_color = "gray", color = hcl.colors(50, "YlGn",),
         main = "Heatmap of DAVID analysis results after Simper analysis",
         fontsize = 10, fontsize_row = 8, fontsize_col = 8)
-
 save_pheatmap_png <- function(x, filename, width=1200, height=1000, res = 150) {
   png(filename, width = width, height = height, res = res)
   grid::grid.newpage()
   grid::grid.draw(x$gtable)
   dev.off()
 }
- 
 save_pheatmap_png(p2, "Heatmap of DAVID analysis results after Simper analysis (scale).png")
 
 
 # Create a heatmap from contrast analysis results (by David)
-
 setwd("/Users/martina/Desktop/R/Heatmap_PCA")
 
 hm_contr_df <- read.csv("Contrast_analysis_table.csv", sep = ",")
 
-hm_contr_df
-
 rownames(hm_contr_df) <- hm_contr_df$Category
 
 hm_contr_df <- hm_contr_df[-(5:8)]
-
 hm_contr_df <- hm_contr_df[-9]
-
 hm_contr_df <- t(hm_contr_df)
-
 
 # Hierarchical cluster dendrogram with hclust function
 d1 <- dist(hm_contr_df)
-
 hc1 <- hclust(d1)
 
 pdf("Clustering_contrast.pdf")
 plot(hc1) # Dendrogram
-
-
-
-library(pheatmap)
 
 p3 <- pheatmap(hm_contr_df, scale = "none", cluster_rows = TRUE, cluster_cols = TRUE,
          clustering_distance_rows = "euclidean",clustering_distance_cols = "euclidean", 
@@ -114,15 +97,13 @@ p3 <- pheatmap(hm_contr_df, scale = "none", cluster_rows = TRUE, cluster_cols = 
          cutree_rows = NA, cutree_cols = NA, 
         border_color = "gray", color = hcl.colors(50, "YlGnBu",),
         main = "Heatmap of DAVID analysis results after Contrast analysis",
-        fontsize = 10, fontsize_row = 8, fontsize_col = 8)
-         
+        fontsize = 10, fontsize_row = 8, fontsize_col = 8)         
 save_pheatmap_png <- function(x, filename, width=1200, height=1000, res = 150) {
   png(filename, width = width, height = height, res = res)
   grid::grid.newpage()
   grid::grid.draw(x$gtable)
   dev.off()
 }
- 
 save_pheatmap_png(p3, "Heatmap of DAVID analysis results after Contrast analysis.png")
 
 
@@ -134,14 +115,12 @@ p4 <- pheatmap(hm_contr_df, scale = "row", cluster_rows = TRUE, cluster_cols = T
         border_color = "gray", color = hcl.colors(50, "YlGnBu",),
         main = "Heatmap of DAVID analysis results after Contrast analysis",
         fontsize = 10, fontsize_row = 8, fontsize_col = 8)
-
 save_pheatmap_png <- function(x, filename, width=1200, height=1000, res = 150) {
   png(filename, width = width, height = height, res = res)
   grid::grid.newpage()
   grid::grid.draw(x$gtable)
   dev.off()
 }
- 
 save_pheatmap_png(p4, "Heatmap of DAVID analysis results after Contrast analysis (scale).png")
 
 ```
@@ -149,29 +128,14 @@ save_pheatmap_png(p4, "Heatmap of DAVID analysis results after Contrast analysis
 ```{r}
 # Create a PCA from simper analysis results (by David)
 
-setwd("/Users/martina/Desktop/R/Heatmap_PCA")
-
 PCA_simp_df <- read.csv("Simper_analysis_table.csv", sep = ",")
-
-PCA_simp_df
 
 rownames(PCA_simp_df) <- PCA_simp_df$Category
 
 PCA_simp_df <- PCA_simp_df[-1]
-
 names(PCA_simp_df)[5] <- "Category"
 
 PCA_simper <- prcomp(PCA_simp_df[-5], scale = FALSE)
-
-summary(PCA_simper)
-
-str(PCA_simper)
-
-install.packages("devtools")
-
-install_github("vqv/ggbiplot")
-
-library(ggbiplot)
 
 ggbiplot(PCA_simper, ellipse=TRUE, circle=TRUE, labels=rownames(PCA_simp_df),
          obs.scale = 1, var.scale = 1,
@@ -181,26 +145,13 @@ ggbiplot(PCA_simper, ellipse=TRUE, circle=TRUE, labels=rownames(PCA_simp_df),
 
 ggsave("PCA_simper.png")
 
-
 # Create a PCA from contrast analysis results (by David)
-
 PCA_contr_df <- read.csv("Contrast_analysis_table.csv", sep = ",")
-
-PCA_contr_df
-
 rownames(PCA_contr_df) <- PCA_contr_df$Category
-
 PCA_contr_df <- PCA_contr_df[-1]
-
 names(PCA_contr_df)[9] <- "Category"
 
 PCA_contrast <- prcomp(PCA_contr_df[-9], scale = FALSE)
-
-summary(PCA_contrast)
-
-str(PCA_contrast)
-
-library(ggbiplot)
 
 ggbiplot(PCA_contrast, ellipse=TRUE, circle=TRUE, labels=rownames(PCA_contr_df),
          obs.scale = 1, var.scale = 1,
